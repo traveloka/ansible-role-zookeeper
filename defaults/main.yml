@@ -1,0 +1,5 @@
+---
+# defaults file for zookeeper
+
+zookeeper_enabled: true
+zookeeper_state: started

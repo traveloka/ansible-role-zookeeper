@@ -1,0 +1,22 @@
+---
+# tasks file for zookeeper
+
+- name: install zookeeperd
+  become: true
+  become_method: sudo
+  apt:
+    name: zookeeperd
+    cache_valid_time: "{{ apt_cache_valid_time|default(omit) }}"
+    install_recommends: false
+    state: present
+    update_cache: true
+  tags:
+    - zookeeper
+
+- name: configure zookeeper service
+  become: true
+  become_method: sudo
+  service:
+    name: zookeeper
+    enabled: "{{ zookeeper_enabled }}"
+    state: "{{ zookeeper_state }}"
